@@ -15,24 +15,8 @@ if [ "$EUID" -ne 0 ]; then
     echo "Run: sudo bash nexora-aws-node-install.sh"
     exit 1
 fi
-
 # =========================================================
-# 1. HOSTNAME
-# =========================================================
-
-echo
-echo "Configuring hostname: nexora..."
-
-hostnamectl set-hostname nexora
-
-if ! grep -qE '^[[:space:]]*127\.0\.1\.1[[:space:]]+nexora([[:space:]]|$)' /etc/hosts; then
-    echo "127.0.1.1 nexora" >> /etc/hosts
-fi
-
-echo "Hostname: $(hostname)"
-
-# =========================================================
-# 2. CHECK OS
+# 1. CHECK OS
 # =========================================================
 
 echo
